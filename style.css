@@ -1,0 +1,518 @@
+/* ==========================================
+   GLOBAL VARIABLES & RESET
+   ========================================== */
+:root {
+    --bg-dark: #07080b;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --accent-color: #ff4d6d;
+    --accent-hover: #ff758f;
+    --text-main: #f8f9fa;
+    --text-muted: #a0aab2;
+    --nav-bg: rgba(7, 8, 11, 0.85);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-dark);
+    /* Background Gradasi Glowing Dinamis */
+    background-image: 
+        radial-gradient(circle at 10% 15%, rgba(255, 77, 109, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(99, 102, 241, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(255, 117, 143, 0.05) 0%, transparent 60%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body.is-locked {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* KONTEN TERKUNCI DI AWAL */
+.content-locked {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.content-locked.is-unlocked {
+    display: block;
+    opacity: 1;
+}
+
+nav.content-locked.is-unlocked {
+    display: flex;
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, #ff4d6d, #ff758f);
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 35px;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(255, 77, 109, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.6);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    border: 1px solid var(--card-border);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    font-size: 0.88rem;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================
+   FLOATING MUSIC PLAYER
+   ========================================== */
+.music-player-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+.music-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff4d6d, #ff758f);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+    transform: scale(1.08);
+}
+
+.music-btn.playing {
+    animation: rotateDisc 4s linear infinite;
+}
+
+@keyframes rotateDisc {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   NAVBAR (Diam di atas, tidak ikut di-scroll)
+   ========================================== */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 1.2rem 3rem;
+    background: var(--nav-bg);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* ==========================================
+   HERO SECTION (Pas Satu Layar)
+   ========================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.tagline {
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    margin: 0.5rem 0;
+    line-height: 1.2;
+    background: linear-gradient(to right, #fff, #c5cbd3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+}
+
+/* Counter Box Diperramping */
+.counter-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(15px);
+    padding: 1.2rem 1.5rem;
+    border-radius: 20px;
+    margin: 1.2rem auto;
+    max-width: 480px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.counter-box h3 {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+}
+
+.counter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+}
+
+.time-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.6rem 0.4rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.time-card span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.time-card small {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+/* Random Memory Box Ringkas */
+.random-memory-box {
+    margin: 1rem 0;
+}
+
+.memory-display {
+    margin-top: 0.8rem;
+    padding: 0.8rem 1rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--accent-color);
+    backdrop-filter: blur(10px);
+}
+
+.memory-display p {
+    font-style: italic;
+    color: var(--text-main);
+    margin: 0;
+    font-size: 0.88rem;
+}
+
+.hidden { display: none; }
+
+/* ==========================================
+   TIMELINE SECTION
+   ========================================== */
+.timeline-section, .gallery-section, .video-section {
+    padding: 6rem 0;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 3.5rem;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--card-border);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 15px 40px;
+    position: relative;
+    width: 50%;
+}
+
+.timeline-item.left { left: 0; text-align: right; }
+.timeline-item.right { left: 50%; text-align: left; }
+
+.timeline-content {
+    padding: 1.8rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+}
+
+.timeline-content .date {
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.timeline-content h3 {
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+}
+
+.timeline-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   GALLERY GRID (12 Foto)
+   ========================================== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.8rem;
+}
+
+.gallery-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 77, 109, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    cursor: pointer;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.04);
+}
+
+.gallery-caption {
+    padding: 1.2rem;
+}
+
+.gallery-caption h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+}
+
+.gallery-caption p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   VIDEO GRID (2 Kolom ke Samping, 2 ke Bawah)
+   ========================================== */
+.video-section .container {
+    max-width: 900px;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.video-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.video-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 77, 109, 0.3);
+}
+
+.video-item video {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    background: black;
+}
+
+.video-caption {
+    padding: 1.2rem;
+}
+
+.video-caption h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+}
+
+.video-caption p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Spark Button */
+.interactive-spark {
+    text-align: center;
+    margin-top: 3.5rem;
+}
+
+.btn-spark {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.btn-spark:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   LIGHTBOX MODAL
+   ========================================== */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(7, 8, 11, 0.92);
+    backdrop-filter: blur(20px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+}
+
+.lightbox-caption {
+    color: white;
+    margin-top: 1.2rem;

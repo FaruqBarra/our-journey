@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Journey — Moments & Memories</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="is-locked">
+
+    <!-- FLOATING MUSIC PLAYER -->
+    <div class="music-player-float">
+        <button id="musicToggleBtn" class="music-btn" title="Play/Pause Music">
+            <i id="musicIcon" class="fa-solid fa-music"></i>
+        </button>
+        <audio id="bgMusic" loop src="assets/bg-music.mp3"></audio>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="mainNav" class="navbar content-locked">
+        <div class="logo"></div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#gallery">Photo Gallery</a></li>
+            <li><a href="#videos">Video Moments</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <span class="tagline">A Story of Two Souls</span>
+            <h1>Documenting Our Special Moments</h1>
+            <p>Satu tempat untuk merangkum cerita, tawa, dan momen-momen berharga yang dilewati bersama.</p>
+            
+            <!-- Relationship Counter -->
+            <div class="counter-box">
+                <h3>Together For</h3>
+                <div id="counter" class="counter-grid">
+                    <div class="time-card"><span id="days">0</span><small>Hari</small></div>
+                    <div class="time-card"><span id="hours">0</span><small>Jam</small></div>
+                    <div class="time-card"><span id="minutes">0</span><small>Menit</small></div>
+                    <div class="time-card"><span id="seconds">0</span><small>Detik</small></div>
+                </div>
+            </div>
+
+            <!-- RANDOM MEMORY GENERATOR -->
+            <div class="random-memory-box">
+                <button id="randomMemBtn" class="btn-secondary">
+                    <i class="fa-solid fa-shuffle"></i> Surprise Memory ✨
+                </button>
+                <div id="memoryDisplay" class="memory-display hidden">
+                    <p id="memoryText">"Setiap momen punya ceritanya sendiri..."</p>
+                </div>
+            </div>
+
+            <button id="unlockBtn" class="btn-primary" style="margin-top: 1.5rem;">
+                Lihat Perjalanan <i class="fa-solid fa-arrow-down"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- WRAPPER KONTEN LAINNYA -->
+    <div id="lockedContent" class="content-locked">
+
+        <!-- TIMELINE SECTION -->
+        <section id="timeline" class="timeline-section">
+            <div class="container">
+                <h2 class="section-title">Our Milestones</h2>
+                <p class="section-subtitle">Beberapa jejak langkah penting yang pernah diukir bersama.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <span class="date">Awal Perkenalan</span>
+                            <h3>How We First Met</h3>
+                            <p>Berawal dari obrolan singkat yang ternyata berlanjut ke banyak pembahasan seru sampai hari ini.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <span class="date">First Trip Together</span>
+                            <h3>The First Chapter</h3>
+                            <p>Momen pertama kali jalan bareng yang penuh canggung tapi jadi kenangan manis pas diinget lagi.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <span class="date">Momen Berkesan</span>
+                            <h3>Growing Together</h3>
+                            <p>Belajar saling mengerti, melewati hari-hari seru, hingga merayakan pencapaian kecil masing-masing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTO GALLERY SECTION (12 Foto) -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <h2 class="section-title">Captured Memories</h2>
+                <p class="section-subtitle">Kumpulan foto dan potret momen sederhana yang berharga. <i>(Klik foto untuk perbesar)</i></p>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="assets/foto1.jpg?v=2" alt="Momen Seru #1" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto2.jpg?v=2" alt="Jalan-Jalan #2" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto3.jpg?v=2" alt="Tawa Bersama #3" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto4.jpg?v=2" alt="Sunset Vibes #4" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto5.jpg?v=2" alt="Random Cafe Date #5" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto6.jpg?v=2" alt="Unplanned Trip #6" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto7.jpg?v=2" alt="Special Day #7" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto8.jpg?v=2" alt="Night Ride #8" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto9.jpg?v=2" alt="Food Hunting #9" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto10.jpg?v=2" alt="Weekend Mood #10" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto11.jpg?v=2" alt="Coffee Time #11" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto12.jpg?v=2" alt="Memorable Trip #12" class="lightbox-trigger" onerror="this.src='https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800'">
+                        <div class="gallery-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIDEO GALLERY SECTION (4 Video) -->
+        <section id="videos" class="video-section">
+            <div class="container">
+                <h2 class="section-title">Video Clips</h2>
+                <p class="section-subtitle">Potret momen bergerak yang menangkap gelak tawa dan suasana.</p>
+
+                <div class="video-grid">
+                    <div class="video-item">
+                        <video controls poster="assets/poster1.jpg?v=2">
+                            <source src="assets/video1.mp4?v=2" type="video/mp4">
+                            Browser kamu tidak mendukung pemutaran video.
+                        </video>
+                        <div class="video-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="video-item">
+                        <video controls poster="assets/poster2.jpg?v=2">
+                            <source src="assets/video2.mp4?v=2" type="video/mp4">
+                            Browser kamu tidak mendukung pemutaran video.
+                        </video>
+                        <div class="video-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="video-item">
+                        <video controls poster="assets/poster3.jpg?v=2">
+                            <source src="assets/video3.mp4?v=2" type="video/mp4">
+                            Browser kamu tidak mendukung pemutaran video.
+                        </video>
+                        <div class="video-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="video-item">
+                        <video controls poster="assets/poster4.jpg?v=2">
+                            <source src="assets/video4.mp4" type="video/mp4">
+                            Browser kamu tidak mendukung pemutaran video.
+                        </video>
+                        <div class="video-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="video-item">
+                        <video controls poster="assets/poster4.jpg?v=2">
+                            <source src="assets/video5.mp4?v=2" type="video/mp4">
+                            Browser kamu tidak mendukung pemutaran video.
+                        </video>
+                        <div class="video-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="video-item">
+                        <video controls poster="assets/poster4.jpg?v=2">
+                            <source src="assets/video6.mp4?v=2" type="video/mp4">
+                            Browser kamu tidak mendukung pemutaran video.
+                        </video>
+                        <div class="video-caption">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Spark Button -->
+                <div class="interactive-spark">
+                    <button id="sparkBtn" class="btn-spark">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Send Good Vibes ✨ <span id="sparkCount">0</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p></p>
+            <small></small>
+        </footer>
+
+    </div>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox-modal">
+        <span id="lightboxClose" class="lightbox-close">&times;</span>
+        <img id="lightboxImg" class="lightbox-content" src="" alt="Zoom Photo">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
